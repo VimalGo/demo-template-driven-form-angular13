@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StateAddFormComponent } from './components/state-add-form/state-add-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StateAddFormComponent
   ],
   imports: [
     BrowserModule,

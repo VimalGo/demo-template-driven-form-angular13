@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Add New State</h5></div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="stateName"> State Name </label>
+                <input
+                  class="form-control"
+                  placeholder="State"
+                  type="text"
+                  id="stateName"
+                  ngModel
+                  name="stateName"
+                  required
+                  maxlength="50"
+                  #stateName="ngModel"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="!stateName.valid && stateName.touched"
+                  >Please enter State Name</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label for="countryId"> Country Name </label>
+                <select
+                  class="form-control"
+                  id="countryId"
+                  name="countryId"
+                  required
+                  [ngModel]="selectDefault"
+                  #countryId="ngModel"
+                >
+                  <option [ngValue]="null">-- Select --</option>
+                  <option
+                    style="background-color: darkcyan"
+                    *ngFor="let c of countryList"
+                    [value]="c.countryId"
+                  >
+                    {{ c.countryName }}
+                  </option>
+                </select>
+
+                <span
+                  class="text-danger"
+                  *ngIf="countryId.touched && countryId.errors?.['required']"
+                  >Please select Country Name</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button
+              class="btn btn-fill btn-danger"
+              type="submit"
+              [disabled]="!f.valid"
+            >
+              Save
+            </button>
+            <button
+              class="btn btn-fill btn-danger"
+              type="button"
+              (click)="redirectToList()"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
